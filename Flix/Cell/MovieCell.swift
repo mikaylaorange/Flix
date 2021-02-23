@@ -12,9 +12,19 @@ class MovieCell: UITableViewCell {
     @IBOutlet var movieImage: UIImageView!
     @IBOutlet var movieTitle: UILabel!
     @IBOutlet var movieDescription: UILabel!
+    
+    var r: Movie! {
+        didSet {
+            movieTitle.text = r.title
+            movieDescription.text = r.overView
+            movieImage.af.setImage(withURL: r.posterUrl!)
+            movieImage.layer.cornerRadius = 10
+            movieImage.clipsToBounds = true
+            
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
-        movieImage.contentMode = .scaleAspectFit
         // Initialization code
     }
 
